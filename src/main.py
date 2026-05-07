@@ -1,5 +1,6 @@
 """FastAPI application: ingest, query, and evaluate endpoints."""
 import logging
+import os
 from contextlib import asynccontextmanager
 from datetime import datetime
 
@@ -25,6 +26,10 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup: load prompt templates and warm up retriever."""
+    # Strip whitespace from API keys so Ragas/OpenAI SDK read clean values
+    for key in ("OPENAI_API_KEY", "COHERE_API_KEY"):
+        if key in os.environ:
+            os.environ[key] = os.environ[key].strip()
     load_templates()
     get_hybrid_retriever()
     logger.info("RAG API startup complete")
