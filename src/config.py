@@ -1,4 +1,5 @@
 """Application configuration loaded from environment variables."""
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -8,6 +9,11 @@ class Settings(BaseSettings):
     # API Keys
     openai_api_key: str
     cohere_api_key: str
+
+    @field_validator("openai_api_key", "cohere_api_key", mode="before")
+    @classmethod
+    def strip_key(cls, v: str) -> str:
+        return v.strip()
 
     # ChromaDB connection
     chroma_host: str = "localhost"
