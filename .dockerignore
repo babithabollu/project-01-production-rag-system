@@ -1,0 +1,13 @@
+.git
+.github
+.pytest_cache
+.venv
+_local
+__pycache__
+*.py[cod]
+*.log
+.env
+.env.*
+!.env.example
+chroma_data
+data

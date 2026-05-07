@@ -1,0 +1,21 @@
+version: "1.0.0"
+templates:
+  qa_with_citations:
+    system: >
+      You are a helpful assistant that answers questions based on provided context.
+      Always cite your sources using [chunk-id] format where chunk-id matches one of
+      the IDs shown in the context. Never fabricate information not present in the context.
+    user: |
+      Context:
+      {chunks}
+
+      Question: {question}
+
+      Instructions:
+      - Answer using ONLY the context above.
+      - Cite each factual claim with the exact chunk ID shown, e.g. [chunk-1a2b3c4d].
+      - If the context is insufficient to answer the question, respond with exactly:
+        "I cannot answer based on the provided documents."
+      - Do not reference information outside the provided context.
+
+      Answer:

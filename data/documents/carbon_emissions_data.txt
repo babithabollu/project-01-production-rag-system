@@ -1,0 +1,161 @@
+GLOBAL CARBON EMISSIONS DATA SUMMARY
+Source: Global Carbon Project, IEA, IPCC AR6 (2021-2023)
+
+=============================================================================
+SECTION 1: GLOBAL CO2 EMISSIONS OVERVIEW
+=============================================================================
+
+Global CO2 emissions from fossil fuels and industry reached approximately 36.8 billion
+tonnes (Gt CO2) in 2022, a record high. This represents an increase of 1% from the
+previous record of 36.3 Gt CO2 in 2019, prior to the COVID-19 pandemic.
+
+Year-by-year milestones:
+  - 1990: 22.7 Gt CO2
+  - 2000: 25.4 Gt CO2
+  - 2010: 33.1 Gt CO2
+  - 2019: 36.3 Gt CO2 (pre-pandemic record)
+  - 2020: 34.0 Gt CO2 (COVID-19 pandemic decline of 5.4%)
+  - 2021: 36.3 Gt CO2 (post-pandemic recovery)
+  - 2022: 36.8 Gt CO2 (new record)
+
+Land-use change (deforestation, agriculture) adds approximately 3.9 Gt CO2 per year,
+bringing total anthropogenic CO2 emissions to approximately 40.7 Gt CO2 in 2022.
+
+=============================================================================
+SECTION 2: EMISSIONS BY COUNTRY (2022)
+=============================================================================
+
+China is the world's largest CO2 emitter, accounting for approximately 30% of global
+fossil fuel CO2 emissions:
+
+  1. China:         11.5 Gt CO2   (31.2% of global total)
+  2. United States:  4.9 Gt CO2   (13.3%)
+  3. India:          2.8 Gt CO2   (7.6%)
+  4. Russia:         1.9 Gt CO2   (5.2%)
+  5. Japan:          1.1 Gt CO2   (2.9%)
+  6. Germany:        0.7 Gt CO2   (1.8%)
+  7. South Korea:    0.6 Gt CO2   (1.6%)
+  8. Canada:         0.6 Gt CO2   (1.5%)
+  9. Iran:           0.6 Gt CO2   (1.6%)
+ 10. Saudi Arabia:   0.6 Gt CO2   (1.6%)
+
+Top 10 emitters collectively account for approximately 68% of global CO2 emissions.
+
+Cumulative historical emissions (1850-2022):
+  - United States: ~410 Gt CO2 (largest historical contributor)
+  - European Union: ~370 Gt CO2
+  - China: ~280 Gt CO2
+
+=============================================================================
+SECTION 3: EMISSIONS BY SECTOR (2022)
+=============================================================================
+
+Global greenhouse gas emissions by sector (CO2-equivalent):
+
+  Energy (electricity & heat):  34%
+  Transportation:                16%
+  Industry (manufacturing):     24%
+  Agriculture:                   11%
+  Buildings:                      6%
+  Waste & other:                  9%
+
+Within the energy sector:
+  - Coal combustion:  40% of energy CO2
+  - Oil combustion:   33% of energy CO2
+  - Natural gas:      27% of energy CO2
+
+=============================================================================
+SECTION 4: GREENHOUSE GAS COMPOSITION
+=============================================================================
+
+Carbon dioxide (CO2) is the dominant greenhouse gas but not the only one:
+
+  CO2 (fossil fuels & industry):  65% of total GHG warming contribution
+  CO2 (land-use change):           11%
+  Methane (CH4):                   16%
+  Nitrous oxide (N2O):              6%
+  Fluorinated gases (F-gases):      2%
+
+Methane (CH4):
+  - Global warming potential (GWP100): 27.9x CO2
+  - Global warming potential (GWP20):  81.2x CO2
+  - Major sources: natural gas/oil leaks (fossil fuels), livestock enteric
+    fermentation, rice paddies, landfills, wetlands
+  - Global CH4 emissions: approximately 580 million tonnes/year
+
+Nitrous oxide (N2O):
+  - Global warming potential (GWP100): 273x CO2
+  - Major sources: synthetic fertilizers, livestock manure, soil disturbance
+
+=============================================================================
+SECTION 5: RENEWABLE ENERGY AND EMISSIONS
+=============================================================================
+
+Electricity sector CO2 emissions declined by approximately 1.3% in 2022 in
+OECD countries despite strong economic growth, due to growth in solar and
+wind generation.
+
+Renewable energy share of global electricity generation (2022):
+  - Total renewables:  29.9%
+  - Hydropower:        15.3%
+  - Wind:               7.6%
+  - Solar PV:           4.9%
+  - Bioenergy:          2.4%
+  - Other renewables:   0.4%
+  - Nuclear (low-carbon, non-renewable): 9.2%
+
+CO2 intensity of electricity generation (gCO2/kWh, 2022 global average):
+  - Coal:            820 g CO2/kWh
+  - Natural gas:     490 g CO2/kWh
+  - Nuclear:           12 g CO2/kWh lifecycle
+  - Solar PV:          38 g CO2/kWh lifecycle
+  - Onshore wind:      11 g CO2/kWh lifecycle
+  - Hydropower:         4 g CO2/kWh lifecycle
+  - Global average:   436 g CO2/kWh
+
+Decarbonizing electricity to <50 gCO2/kWh by 2035 (IEA NZE scenario) requires
+adding approximately 1,020 GW/year of solar and wind capacity — 3x the current
+annual deployment rate of ~340 GW/year.
+
+=============================================================================
+SECTION 6: CARBON BUDGET AND TARGETS
+=============================================================================
+
+The Paris Agreement (2015) established two temperature targets:
+  - Well below 2°C above pre-industrial levels
+  - Best efforts to limit to 1.5°C above pre-industrial levels
+
+Remaining carbon budget (as of January 2023, IPCC AR6):
+  - 50% probability of staying below 1.5°C:  ~500 Gt CO2
+  - 67% probability of staying below 1.5°C:  ~380 Gt CO2
+  - 50% probability of staying below 2.0°C:  ~1,500 Gt CO2
+
+At current emission rates of ~40 Gt CO2/year, the 1.5°C carbon budget
+will be exhausted in approximately 9-12 years (by ~2032-2035).
+
+Net-zero CO2 targets by major emitters:
+  - European Union: 2050
+  - United States:  2050
+  - China:          2060
+  - India:          2070
+
+=============================================================================
+SECTION 7: CARBON CAPTURE AND STORAGE (CCS)
+=============================================================================
+
+Carbon capture and storage (CCS) technology captures CO2 emissions from power
+plants and industrial facilities before they enter the atmosphere. The captured
+gas is compressed and injected into underground geological formations — typically
+depleted oil and gas reservoirs or saline aquifers — for long-term storage.
+
+Current CCS deployment (2022):
+  - Global operational CCS capacity:  ~45 million tonnes CO2/year
+  - Required by 2050 (IEA NZE scenario): ~7,600 million tonnes CO2/year
+
+CCS remains expensive at $50-100/tonne CO2 for power plants and is not yet
+deployed at the scale required for climate targets. The IPCC identifies CCS as
+an important but not sufficient mitigation option.
+
+=============================================================================
+END OF DATA SUMMARY
+=============================================================================

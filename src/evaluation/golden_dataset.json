@@ -1,0 +1,122 @@
+[
+  {
+    "question": "What is the primary cause of global warming according to the IPCC?",
+    "ground_truth_answer": "The primary cause of global warming is human-induced greenhouse gas emissions, particularly carbon dioxide from burning fossil fuels.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["climate_change_ipcc_summary.pdf"]
+  },
+  {
+    "question": "What percentage of global electricity could renewables supply by 2050?",
+    "ground_truth_answer": "Renewable energy sources could supply up to 85% of global electricity by 2050 according to various energy transition scenarios.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["renewable_energy_guide.md"]
+  },
+  {
+    "question": "How does solar photovoltaic technology convert sunlight into electricity?",
+    "ground_truth_answer": "Solar photovoltaic (PV) cells convert sunlight into electricity through the photovoltaic effect, where photons knock electrons loose in semiconductor materials like silicon, creating an electric current.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["renewable_energy_guide.md"]
+  },
+  {
+    "question": "What are the main greenhouse gases responsible for climate change?",
+    "ground_truth_answer": "The main greenhouse gases are carbon dioxide (CO2), methane (CH4), nitrous oxide (N2O), and fluorinated gases. CO2 from fossil fuel combustion is the largest contributor.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["climate_change_ipcc_summary.pdf"]
+  },
+  {
+    "question": "What was the global average temperature increase recorded since pre-industrial times?",
+    "ground_truth_answer": "Global average temperatures have increased by approximately 1.1°C above pre-industrial levels as of the early 2020s.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["climate_change_ipcc_summary.pdf"]
+  },
+  {
+    "question": "How does wind energy generation work?",
+    "ground_truth_answer": "Wind turbines convert kinetic energy from wind into mechanical power, which drives a generator to produce electricity. The turbine blades rotate when wind flows over them, creating lift similar to airplane wings.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["renewable_energy_guide.md"]
+  },
+  {
+    "question": "What were global CO2 emissions in 2022?",
+    "ground_truth_answer": "Global CO2 emissions reached approximately 36.8 billion tonnes in 2022, a record high driven by post-pandemic economic recovery.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["carbon_emissions_data.txt"]
+  },
+  {
+    "question": "Which sector produces the most greenhouse gas emissions globally?",
+    "ground_truth_answer": "The energy sector, including electricity and heat generation, is the largest source of global greenhouse gas emissions, accounting for roughly 34% of total emissions.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["carbon_emissions_data.txt"]
+  },
+  {
+    "question": "What is the Paris Agreement's temperature target?",
+    "ground_truth_answer": "The Paris Agreement aims to limit global warming to well below 2°C above pre-industrial levels, with efforts to limit the increase to 1.5°C.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["climate_change_ipcc_summary.pdf"]
+  },
+  {
+    "question": "What is the capacity factor of solar panels compared to wind turbines?",
+    "ground_truth_answer": "Solar panels typically have a capacity factor of 10–25% depending on location, while onshore wind turbines range from 25–40% and offshore wind can exceed 45%.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["renewable_energy_guide.md"]
+  },
+  {
+    "question": "How much has the cost of solar energy declined in the past decade?",
+    "ground_truth_answer": "The cost of solar photovoltaic electricity has fallen by more than 89% between 2010 and 2022, making it the cheapest source of electricity in history.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["renewable_energy_guide.md"]
+  },
+  {
+    "question": "What share of global electricity came from renewable sources in 2022?",
+    "ground_truth_answer": "Renewable energy sources accounted for approximately 30% of global electricity generation in 2022, with hydropower being the largest contributor.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["carbon_emissions_data.txt"]
+  },
+  {
+    "question": "What are the projected sea level rise estimates by 2100?",
+    "ground_truth_answer": "Under high-emission scenarios, global sea levels are projected to rise by 0.6 to 1.0 meters by 2100, with possible higher scenarios exceeding 1.5 meters if ice sheet instabilities occur.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["climate_change_ipcc_summary.pdf"]
+  },
+  {
+    "question": "How does hydropower contribute to renewable energy generation?",
+    "ground_truth_answer": "Hydropower generates electricity by directing water flow through turbines. It is the largest source of renewable electricity globally, providing about 16% of world electricity and over 60% of renewable electricity.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["renewable_energy_guide.md"]
+  },
+  {
+    "question": "What is carbon capture and storage (CCS)?",
+    "ground_truth_answer": "Carbon capture and storage (CCS) is a technology that captures CO2 emissions from power plants and industrial facilities, compresses the gas, and injects it into underground geological formations for long-term storage.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["climate_change_ipcc_summary.pdf"]
+  },
+  {
+    "question": "Which countries are the largest emitters of CO2?",
+    "ground_truth_answer": "China, the United States, India, Russia, and Japan are among the world's largest CO2 emitters. China alone accounts for roughly 30% of global CO2 emissions.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["carbon_emissions_data.txt"]
+  },
+  {
+    "question": "What is geothermal energy and where is it used?",
+    "ground_truth_answer": "Geothermal energy harnesses heat from the Earth's interior to generate electricity or provide direct heating. It is used extensively in Iceland, the United States, Kenya, and the Philippines.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["renewable_energy_guide.md"]
+  },
+  {
+    "question": "What carbon budget remains to limit warming to 1.5°C?",
+    "ground_truth_answer": "As of 2023, the remaining carbon budget to limit warming to 1.5°C with 50% probability is approximately 500 billion tonnes of CO2.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["climate_change_ipcc_summary.pdf"]
+  },
+  {
+    "question": "How does energy storage address the intermittency of renewables?",
+    "ground_truth_answer": "Battery storage systems, pumped hydro storage, and other technologies store excess renewable energy for use when generation is low. Lithium-ion batteries have seen cost reductions of over 90% since 2010.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["renewable_energy_guide.md"]
+  },
+  {
+    "question": "What role does methane play in climate change?",
+    "ground_truth_answer": "Methane (CH4) is a potent greenhouse gas with a global warming potential about 80 times greater than CO2 over 20 years. It is emitted from natural gas leaks, livestock, rice paddies, and landfills.",
+    "relevant_chunk_ids": [],
+    "source_documents": ["carbon_emissions_data.txt"]
+  }
+]

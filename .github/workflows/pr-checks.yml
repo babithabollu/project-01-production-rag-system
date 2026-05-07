@@ -1,0 +1,45 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: pytest tests/ -v --ignore=tests/test_evaluation.py
+
+      - name: Validate .env.example has no real secrets
+        run: |
+          if grep -E 'sk-[a-zA-Z0-9]{20,}' .env.example; then
+            echo "ERROR: .env.example contains a real API key"
+            exit 1
+          fi
+          echo "No real secrets found in .env.example"
+
+      - name: Validate golden dataset structure
+        run: |
+          python -c "
+          import json
+          with open('src/evaluation/golden_dataset.json') as f:
+              data = json.load(f)
+          assert len(data) >= 10, 'Need at least 10 golden examples'
+          for item in data:
+              assert 'question' in item
+              assert 'ground_truth_answer' in item
+          print(f'Golden dataset OK: {len(data)} entries')
+          "

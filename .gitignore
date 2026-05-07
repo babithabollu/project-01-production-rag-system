@@ -1,0 +1,39 @@
+# Environment
+.env
+*.env
+
+# ChromaDB persistent storage
+data/chroma_db/
+chroma_data/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+chroma_data/
+
+# Local study guides and personal notes (not for repo)
+_local/
