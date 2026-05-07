@@ -30,10 +30,21 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Start ChromaDB for retrieval tests
+        run: |
+          docker compose up -d chromadb
+          sleep 15
+
       - name: Run unit tests with coverage
+        env:
+          OPENAI_API_KEY: test-openai-key
+          COHERE_API_KEY: test-cohere-key
         run: pytest tests/ -v --cov=src --cov-report=term --ignore=tests/test_evaluation.py
 
       - name: Start services
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
         run: |
           docker compose up -d
           sleep 15

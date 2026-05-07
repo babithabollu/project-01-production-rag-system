@@ -20,7 +20,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Start ChromaDB for retrieval tests
+        run: |
+          docker compose up -d chromadb
+          sleep 15
+
       - name: Run unit tests
+        env:
+          OPENAI_API_KEY: test-openai-key
+          COHERE_API_KEY: test-cohere-key
         run: pytest tests/ -v --ignore=tests/test_evaluation.py
 
       - name: Validate .env.example has no real secrets
@@ -43,3 +51,7 @@ jobs:
               assert 'ground_truth_answer' in item
           print(f'Golden dataset OK: {len(data)} entries')
           "
+
+      - name: Stop services
+        if: always()
+        run: docker compose down

@@ -27,7 +27,7 @@ def chunk_pages(pages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     for page in pages:
         splits = _splitter.split_text(page["text"])
         for idx, text in enumerate(splits):
-            raw_id = f"{page['source']}:{page['page']}:{idx}"
+            raw_id = f"{page['source']}:{page['page']}:{idx}:{text}"
             chunk_id = "chunk-" + hashlib.sha1(raw_id.encode()).hexdigest()[:8]
             chunks.append(
                 {
