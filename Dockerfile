@@ -3,8 +3,13 @@ FROM python:3.11-slim AS builder
 
 WORKDIR /app
 
+ENV PATH=/root/.local/bin:$PATH \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_COMPILE=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
 COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+RUN pip install --no-cache-dir --no-compile --user -r requirements.txt
 
 # ── Stage 2: runtime ──────────────────────────────────────────────────────────
 FROM python:3.11-slim
@@ -21,7 +26,8 @@ COPY --chown=raguser:raguser prompts/ ./prompts/
 USER raguser
 
 ENV PATH=/home/raguser/.local/bin:$PATH
-ENV PYTHONPATH=/app
+ENV PYTHONPATH=/app \
+    PYTHONDONTWRITEBYTECODE=1
 
 EXPOSE 8000
 

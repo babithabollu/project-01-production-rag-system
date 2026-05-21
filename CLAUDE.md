@@ -40,6 +40,18 @@ Copy `.env.example` → `.env`. Required keys: `OPENAI_API_KEY`, `COHERE_API_KEY
 
 ChromaDB defaults: `localhost:8001` (local dev) or `chromadb:8000` (inside Docker network).
 
+## API Endpoints
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET | `/health` | Liveness check |
+| POST | `/ingest` | Upload PDF/md/txt; returns `IngestResponse` |
+| POST | `/query` | Ask question; returns `QueryResponse` with citations |
+| GET | `/evaluate` | Run Ragas eval; returns `EvaluationResult` with pass/fail |
+| GET | `/metrics` | Prometheus metrics (auto-exposed by `prometheus_fastapi_instrumentator`) |
+
+Pydantic schemas live in `src/models.py`: `QueryRequest`, `QueryResponse`, `Citation`, `IngestResponse`, `EvaluationResult`.
+
 ## Architecture
 
 Request flow: `POST /query` → `HybridRetriever.search()` → `rerank()` → `generate_answer()` → citation validation → `QueryResponse`
@@ -64,6 +76,10 @@ Request flow: `POST /query` → `HybridRetriever.search()` → `rerank()` → `g
 **Config** (`src/config.py`): Single `Settings` pydantic-settings class; all tunable params (chunk size, top-k, model names, thresholds) readable from env.
 
 **Prompt versioning**: `prompts/rag_prompts.yaml` has a `version` field. Edit prompts here, not in code.
+
+## Tests
+
+No shared `conftest.py` — each test file defines its own fixtures. Integration tests instantiate real objects (e.g., `HybridRetriever()`) and call `.ingest()` directly; no mocks. Tests require ChromaDB running.
 
 ## Key invariants
 

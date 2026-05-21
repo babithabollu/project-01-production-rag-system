@@ -43,54 +43,14 @@ What makes it different: Full evaluation pipeline with golden dataset, automated
 
 ## Architecture
 
-```
-User Query
-    │
-    ▼
-┌─────────────┐
-│  FastAPI     │  POST /query
-│  (port 8000) │
-└──────┬──────┘
-       │
-       ▼
-┌──────────────────────────────────┐
-│  Hybrid Retrieval               │
-│  ┌────────────┐ ┌─────────────┐ │
-│  │ BM25 Search│ │Vector Search│ │
-│  │ (rank-bm25)│ │ (ChromaDB)  │ │
-│  └─────┬──────┘ └──────┬──────┘ │
-│        └───────┬────────┘        │
-│          RRF Merge (top-20)      │
-└───────────────┬──────────────────┘
-                │
-                ▼
-┌───────────────────────────────────┐
-│  Cohere Cross-Encoder Re-ranker   │
-│  rerank-english-v3.0 (top-5)      │
-└───────────────┬───────────────────┘
-                │
-                ▼
-┌───────────────────────────────────┐
-│  LLM Answer Generator             │
-│  gpt-4o-mini, temperature=0       │
-│  Prompt from prompts/rag_prompts  │
-└───────────────┬───────────────────┘
-                │
-                ▼
-┌───────────────────────────────────┐
-│  Citation Validator               │
-│  Reject hallucinated chunk IDs    │
-└───────────────┬───────────────────┘
-                │
-                ▼
-           JSON Response
-       answer + citations + confidence
+### Full System (Docker Compose + CI/CD)
+![Full System Architecture](images/03.png)
 
+### Document Ingestion Pipeline
+![Ingestion Pipeline](images/01.png)
 
-CI/CD Quality Gate:
-  Push → GitHub Actions → pytest + evaluation → check_quality_gate.py
-  Blocks merge if faithfulness < 0.85 or precision@5 < 0.70
-```
+### Query & Answer Pipeline
+![Query Pipeline](images/02.png)
 
 ---
 
@@ -155,6 +115,28 @@ On Windows/Git Bash, if Docker cannot read your normal Docker config, use a writ
 DOCKER_CONFIG=/d/tmp/docker-config docker compose up -d
 ```
 
+**Where Docker images and data are stored**
+
+This project does not require a remote Docker image registry for local development.
+
+- `rag-api` is built locally from this repository because `docker-compose.yml` uses `build: .`
+- The app image packages `src/` into `/app/src` and `prompts/` into `/app/prompts`
+- During Docker Compose development, local `./src` and `./prompts` are mounted into the container, so those folders override the copies baked into the image
+- `chromadb` is pulled from Docker Hub as `chromadb/chroma:0.5.0`
+- ChromaDB vector data is stored in the Docker volume `chroma_data`
+
+Useful inspection commands:
+```bash
+docker compose images
+docker images
+docker volume ls
+```
+
+After pulling new code, rebuild and restart the local stack:
+```bash
+docker compose up -d --build
+```
+
 **4. Ingest demo documents**
 ```bash
 bash scripts/ingest_demo_docs.sh
@@ -185,6 +167,19 @@ curl -X POST http://localhost:8000/query \
   -d '{"question": "How does solar energy work?", "top_k": 5}'
 ```
 
+**Ask a question from the browser UI:**
+1. Open `http://localhost:8000/docs`
+2. Expand `POST /query`
+3. Click **Try it out**
+4. Enter a request body:
+```json
+{
+  "question": "What is the main cause of climate change?",
+  "top_k": 5
+}
+```
+5. Click **Execute**
+
 **Response includes:**
 - `answer`: Generated response with inline citations like [chunk-1a2b3c4d]
 - `citations`: List of source chunks (text + document + page)
@@ -200,8 +195,13 @@ curl -X POST http://localhost:8000/query \
 
 **Check API health:**
 ```bash
-curl http://localhost:8000/health
+curl http://localhost:8000/health | jq
 # {"status":"healthy","service":"rag-api","version":"1.0.0"}
+```
+
+**Check ChromaDB heartbeat:**
+```powershell
+curl.exe -i http://localhost:8001/api/v1/heartbeat
 ```
 
 **Open API docs in a browser:**
@@ -225,6 +225,62 @@ curl http://localhost:8000/evaluate | jq
 ```bash
 bash scripts/load_test.sh
 ```
+
+---
+
+## Environment Variables
+
+| Variable | Required | Default | Description |
+|---|---|---|---|
+| `OPENAI_API_KEY` | Yes | — | OpenAI key for gpt-4o-mini answer generation |
+| `COHERE_API_KEY` | Yes | — | Cohere key for rerank-english-v3.0 re-ranking |
+| `CHROMA_HOST` | No | `localhost` | ChromaDB host |
+| `CHROMA_PORT` | No | `8001` | ChromaDB port |
+| `CHUNK_SIZE` | No | `700` | Characters per chunk |
+| `CHUNK_OVERLAP` | No | `100` | Overlap between chunks |
+| `TOP_K_RETRIEVAL` | No | `20` | Candidates retrieved before re-ranking |
+| `TOP_K_RERANK` | No | `5` | Top results after re-ranking |
+| `MIN_FAITHFULNESS` | No | `0.85` | Ragas faithfulness threshold for quality gate |
+| `MIN_PRECISION_AT_5` | No | `0.70` | Ragas context precision@5 threshold |
+
+---
+
+## Running Tests
+
+```bash
+# Full suite
+pytest tests/
+
+# Single file
+pytest tests/test_retrieval.py
+
+# Single test
+pytest tests/test_retrieval.py::test_fn
+
+# With coverage
+pytest --cov=src tests/
+```
+
+Tests require ChromaDB running (`docker compose up -d chromadb`). Integration tests use real objects — no mocks.
+
+---
+
+## CI/CD
+
+Two GitHub Actions pipelines:
+
+**PR Checks** (runs on every PR to `main`):
+- Installs deps, starts ChromaDB, runs unit tests
+- Validates `.env.example` has no real secrets
+- Validates golden dataset structure (≥10 entries, required fields)
+
+**CI Quality Gate** (runs on push/PR to `main`):
+- Runs full test suite with coverage
+- Starts all services, ingests demo documents
+- Runs Ragas evaluation against golden dataset
+- Fails PR if `faithfulness < 0.85` or `context_precision@5 < 0.70`
+
+Quality gate blocks merge — metric regressions cannot ship.
 
 ---
 

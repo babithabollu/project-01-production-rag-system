@@ -38,3 +38,5 @@ chroma_data/
 # Local study guides and personal notes (not for repo)
 _local/
 .claude/
+AGENTS.md
+CLAUDE.md

@@ -1,11 +1,11 @@
 """CI quality gate: fails with exit code 1 if evaluation metrics are below threshold."""
+import json
 import sys
+from urllib.request import urlopen
 
-import requests
 
-response = requests.get("http://localhost:8000/evaluate", timeout=300)
-response.raise_for_status()
-result = response.json()
+with urlopen("http://localhost:8000/evaluate", timeout=300) as response:
+    result = json.load(response)
 
 if not result["passed"]:
     print("Quality gate FAILED")
